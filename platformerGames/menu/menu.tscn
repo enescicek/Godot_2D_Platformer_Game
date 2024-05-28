@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfacsufslyyk0"]
+
+[ext_resource type="Script" path="res://menu/menu.gd" id="1_x1q41"]
+[ext_resource type="Texture2D" uid="uid://dmkbm7n6txbbo" path="res://assetler/Arkaplan.png" id="2_p8h2m"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x1q41")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_p8h2m")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 400
+theme_override_constants/margin_right = 400
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="yeniOyun" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0980318, 0.546425, 0.664694, 1)
+theme_override_colors/font_hover_color = Color(0.308245, 0.354881, 0.890748, 1)
+theme_override_font_sizes/font_size = 50
+text = "OYUNU BAŞLAT"
+
+[node name="ayarlar" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0980318, 0.546425, 0.664694, 1)
+theme_override_colors/font_hover_color = Color(0.308245, 0.354881, 0.890748, 1)
+theme_override_font_sizes/font_size = 50
+text = "AYARLAR"
+
+[node name="cikis" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0980318, 0.546425, 0.664694, 1)
+theme_override_colors/font_hover_color = Color(0.308245, 0.354881, 0.890748, 1)
+theme_override_font_sizes/font_size = 50
+text = "ÇIKIŞ"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/yeniOyun" to="." method="_on_yeni_oyun_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ayarlar" to="." method="_on_ayarlar_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/cikis" to="." method="_on_cikis_pressed"]

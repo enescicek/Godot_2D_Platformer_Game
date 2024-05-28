@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpsiiq2u2m3gf"]
+
+[ext_resource type="Script" path="res://sahneler/canvasUI.gd" id="1_53eqg"]
+[ext_resource type="Theme" uid="uid://023kfdncruvu" path="res://UI/ProgressBarTema.tres" id="2_gpocf"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_53eqg")
+
+[node name="Coin_UI" type="Label" parent="."]
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 302.0
+offset_bottom = 85.0
+theme_override_font_sizes/font_size = 50
+text = "COİN :"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 25.0
+offset_top = 92.0
+offset_right = 343.0
+offset_bottom = 146.0
+theme = ExtResource("2_gpocf")
+
+[node name="hp_UI" type="Label" parent="."]
+offset_left = 24.0
+offset_top = 83.0
+offset_right = 302.0
+offset_bottom = 152.0
+theme_override_font_sizes/font_size = 50
+text = "HP :"

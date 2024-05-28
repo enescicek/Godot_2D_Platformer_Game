@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://e3rhae5sp6ko"]
+
+[ext_resource type="Script" path="res://enemy/enemy_pumpkin.gd" id="1_r54ox"]
+[ext_resource type="Texture2D" uid="uid://bh2l1c7d80f08" path="res://assetler/Texture/TX Village Props.png" id="1_yw3e0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yg8t7"]
+atlas = ExtResource("1_yw3e0")
+region = Rect2(576, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pklly"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yg8t7")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_im7ss"]
+radius = 15.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1vx7o"]
+radius = 86.8332
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dcjb5"]
+radius = 17.4642
+
+[node name="enemyPumpkin" type="CharacterBody2D" groups=["Enemy"]]
+script = ExtResource("1_r54ox")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pklly")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_im7ss")
+
+[node name="tespit" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tespit"]
+shape = SubResource("CircleShape2D_1vx7o")
+
+[node name="DangerZone" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DangerZone"]
+shape = SubResource("CircleShape2D_dcjb5")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="tespit" to="." method="_on_tespit_body_entered"]
+[connection signal="body_exited" from="tespit" to="." method="_on_tespit_body_exited"]
+[connection signal="body_entered" from="DangerZone" to="." method="_on_danger_zone_body_entered"]
+[connection signal="body_exited" from="DangerZone" to="." method="_on_danger_zone_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bx4hawpjx05pu"]
+
+[ext_resource type="Script" path="res://scripts/CoinBag.gd" id="1_agp53"]
+[ext_resource type="Texture2D" uid="uid://bh2l1c7d80f08" path="res://assetler/Texture/TX Village Props.png" id="2_8qgxg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j5vmw"]
+radius = 16.0
+
+[node name="Coin_Bag" type="Area2D"]
+script = ExtResource("1_agp53")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_8qgxg")
+region_enabled = true
+region_rect = Rect2(452, 222, 25, 34)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_j5vmw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
